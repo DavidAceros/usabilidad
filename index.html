@@ -1,0 +1,710 @@
+<!DOCTYPE html><html class="light" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Tienda Inclusiva | Compras accesibles para todos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Theme Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#00070b",
+                    "on-primary": "#ffffff",
+                    "surface": "#f8f9fa",
+                    "on-secondary-fixed-variant": "#723600",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-low": "#f3f4f5",
+                    "surface-variant": "#e1e3e4",
+                    "on-secondary-container": "#411e00",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-surface": "#191c1d",
+                    "outline-variant": "#74777f",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#e7e8e9",
+                    "on-background": "#191c1d",
+                    "on-primary-container": "#001f3f",
+                    "secondary-fixed": "#ffdcc7",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#d9dadb",
+                    "secondary-container": "#964900",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-surface": "#2e3132",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#001c3a",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#afc8f0",
+                    "on-secondary-fixed": "#311300",
+                    "secondary": "#964900",
+                    "inverse-on-surface": "#f0f1f2",
+                    "background": "#f8f9fa",
+                    "primary-fixed": "#d4e3ff",
+                    "on-primary-fixed-variant": "#2f486a",
+                    "primary": "#000613",
+                    "error-container": "#ffdad6",
+                    "primary-fixed-dim": "#afc8f0",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed-variant": "#004d62",
+                    "primary-container": "#001f3f",
+                    "on-tertiary-fixed": "#001f29",
+                    "surface-container": "#edeeef",
+                    "secondary-fixed-dim": "#ffb787",
+                    "surface-tint": "#476083",
+                    "tertiary-container": "#00222d",
+                    "tertiary-fixed": "#baeaff",
+                    "tertiary-fixed-dim": "#76d2f6",
+                    "on-tertiary-container": "#2891b2",
+                    "outline": "#43474e",
+                    "on-surface-variant": "#43474e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.5rem",
+                    "xl": "1rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "80px",
+                    "touch-target-min": "48px",
+                    "md": "24px",
+                    "sm": "12px",
+                    "xs": "4px",
+                    "lg": "48px",
+                    "container-max": "1280px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "label-lg": ["Atkinson Hyperlegible Next"],
+                    "headline-lg": ["Atkinson Hyperlegible Next"],
+                    "headline-md": ["Atkinson Hyperlegible Next"],
+                    "body-lg": ["Atkinson Hyperlegible Next"],
+                    "label-sm": ["Atkinson Hyperlegible Next"],
+                    "headline-xl": ["Atkinson Hyperlegible Next"],
+                    "body-md": ["Atkinson Hyperlegible Next"],
+                    "headline-lg-mobile": ["Atkinson Hyperlegible Next"]
+            },
+            "fontSize": {
+                    "label-lg": ["18px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-lg": ["36px", {"lineHeight": "1.3", "fontWeight": "800"}],
+                    "headline-md": ["28px", {"lineHeight": "1.4", "fontWeight": "700"}],
+                    "body-lg": ["22px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "label-sm": ["16px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "headline-xl": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+                    "body-md": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.3", "fontWeight": "800"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Atkinson Hyperlegible Next', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        
+        *:focus {
+            outline: none;
+        }
+        *:focus-visible {
+            outline: 4px solid #000613 !important;
+            outline-offset: 4px !important;
+            box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.9) !important;
+        }
+
+        .accessibility-active {
+            filter: contrast(1.5) saturate(1.1);
+            background-color: #000 !important;
+            color: #fff !important;
+        }
+        .accessibility-active a,
+        .accessibility-active button,
+        .accessibility-active input,
+        .accessibility-active textarea,
+        .accessibility-active select {
+            color: #fff !important;
+            background-color: #000 !important;
+            border-color: #fff !important;
+        }
+        .accessibility-active .bg-white { background-color: #000 !important; }
+        .accessibility-active .bg-surface { background-color: #111 !important; }
+        .accessibility-active .bg-secondary { background-color: #ffbf00 !important; }
+        .accessibility-active .text-on-surface-variant { color: #f3f3f3 !important; }
+
+        .large-text {
+            font-size: 1.15rem;
+        }
+
+        .reduce-motion *,
+        .reduce-motion * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+
+        #accessibilityModal {
+            display: none;
+        }
+        #accessibilityModal.active {
+            display: flex;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: #000613;
+            color: white;
+            padding: 12px;
+            z-index: 100;
+            transition: top 0.2s;
+        }
+        .skip-link:focus {
+            top: 0;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<a class="skip-link font-label-sm" href="#main-content">Saltar al contenido principal</a>
+<!-- TopNavBar -->
+<header class="bg-white/95 backdrop-blur-md border-b-2 border-surface-container-highest sticky top-0 z-40" role="banner">
+<div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between w-full px-md md:px-lg py-sm max-w-container-max mx-auto">
+<div class="flex items-center justify-between w-full gap-4">
+<a aria-label="Tienda Inclusiva Inicio" class="text-headline-md font-extrabold text-primary tracking-tight hover:text-secondary transition-colors" href="/">
+                Tienda<span class="text-secondary">Inclusiva</span>
+</a>
+<div class="flex items-center gap-base">
+<button aria-label="Mi Cuenta" class="w-touch-target-min h-touch-target-min flex items-center justify-center hover:bg-surface-container rounded-xl transition-all">
+<span aria-hidden="true" class="material-symbols-outlined scale-110">account_circle</span>
+</button>
+<button aria-label="2 artículos en el carrito" class="w-touch-target-min h-touch-target-min flex items-center justify-center hover:bg-surface-container rounded-xl transition-all relative">
+<span aria-hidden="true" class="material-symbols-outlined scale-110">shopping_cart</span>
+<span class="absolute top-1 right-1 w-5 h-5 bg-secondary text-white text-[10px] font-bold flex items-center justify-center rounded-full">2</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 w-full">
+<nav aria-label="Menú principal" class="hidden lg:flex items-center gap-md">
+<a class="text-on-surface font-label-sm hover:text-secondary transition-colors py-2 relative group underline decoration-2 decoration-transparent hover:decoration-secondary underline-offset-4" href="#">
+                    Categorías
+                </a>
+<a class="text-on-surface font-label-sm hover:text-secondary transition-colors py-2 relative group underline decoration-2 decoration-transparent hover:decoration-secondary underline-offset-4" href="#">
+                    Ofertas
+                </a>
+<a class="text-on-surface font-label-sm hover:text-secondary transition-colors py-2 relative group underline decoration-2 decoration-transparent hover:decoration-secondary underline-offset-4" href="#">
+                    Ayuda
+                </a>
+</nav>
+</div>
+</div>
+</header>
+<!-- Main Layout -->
+<div class="max-w-container-max mx-auto flex flex-col min-h-screen">
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full bg-white" id="main-content" role="main" tabindex="-1">
+<!-- Hero Section -->
+<section aria-labelledby="hero-heading" class="relative min-h-[600px] flex items-center px-md md:px-xl overflow-hidden py-lg">
+<div class="container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-lg items-center relative z-10">
+<div class="lg:col-span-6 max-w-xl">
+<div class="inline-flex items-center gap-base px-sm py-xs bg-primary text-white rounded-full mb-md">
+<span aria-hidden="true" class="material-symbols-outlined text-[18px]">verified</span>
+<span class="text-label-sm font-bold">E-commerce 100% Accesible</span>
+</div>
+<h1 class="text-headline-xl text-primary mb-md leading-[1.05]" id="hero-heading">Compras fáciles <span class="text-secondary">para todos</span></h1>
+<p class="text-body-lg text-on-surface mb-xl max-w-lg">Diseñamos una experiencia de compra pensada en la diversidad y la autonomía. Sin barreras, solo satisfacción en cada clic.</p>
+<div class="flex flex-wrap gap-md">
+<a href="#products-heading" class="h-[64px] px-lg bg-secondary text-white font-extrabold text-label-lg rounded-xl hover:bg-black transition-all shadow-md flex items-center gap-sm active:scale-95 focus-visible:ring-4 focus-visible:ring-secondary focus-visible:outline-none">
+                                Explorar Catálogo
+                                <span aria-hidden="true" class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="lg:col-span-6 relative">
+<div class="relative rounded-2xl overflow-hidden shadow-2xl">
+<img alt="Fotografía profesional de diversos productos electrónicos modernos dispuestos ordenadamente sobre una superficie blanca, mostrando gadgets tecnológicos accesibles." class="w-full h-[500px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYePUWiYte0RnajARDfCj1A16dl0G-c8Oqs4lloQ51BaB04RePvbYbMnF09mQJU6ImsBQTUeE17__DMao90FR-d__jalgGCoC0Xd8qGk2ngmkGJjz9ctS12ax3b9O21oOMajdhxM8yCu-iAKwO90h_qgN_4ApikGX7dX2MnrrbsB0i8WFdCx7b6Co2HwBMHQbU4b_NKNwv5TkQXMqyz20kuGeNZztcePjJC5oXpsNZrApj89veOHu3pKgeDnMTbqiMwYaY7BAvJ3Fa">
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Promotions / Launch Offer with Sale Items -->
+<section aria-labelledby="promo-heading" class="py-xl px-md md:px-lg bg-surface-container-low">
+<h2 class="sr-only" id="promo-heading">Promociones destacadas</h2>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<div class="lg:col-span-8 p-lg bg-primary text-white rounded-2xl shadow-xl relative overflow-hidden">
+<div class="flex flex-col md:flex-row gap-lg items-center h-full">
+<div class="flex-1">
+<h3 class="text-headline-lg mb-sm">Oferta de Lanzamiento</h3>
+<p class="text-body-lg mb-lg opacity-100 max-w-md font-medium">20% de descuento en todos los accesorios de movilidad esta semana.</p>
+<button class="px-lg py-md bg-secondary text-white font-extrabold rounded-xl hover:bg-white hover:text-primary transition-all shadow-lg border-2 border-transparent">Ver Ofertas</button>
+</div>
+<div class="flex gap-md overflow-x-auto pb-sm w-full md:w-auto">
+<!-- Mini Sale Card 1: Magnifier -->
+<div class="flex-shrink-0 w-48 bg-white rounded-xl p-base text-on-surface">
+<img alt="Lupa Electrónica" class="w-full aspect-square object-cover rounded-lg mb-base" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB92g5kvDbl1hx659itPmvjYV0YlAt_vXr2o2Z_RHxzdWrwOXYVUB38rDd0EhqFkpxNAU3jxwkS7WL1iLe0Qf3Uuiw_Le21Rrlc5Bqa-i2assSKkr7Uyh03CZAcF6QlAiSc1NzvMV8gwO6UPc7XxAk0zKeq47eEy1os3WMnaTAcuO51CL5J18OAMXy98k8layja4x5qEKtSyWKUa2-WbQf2vV0Mau1TMW3PFlp2_x6J56ag8Q71klvYjt_qo3DydzJ9DX3Fre_VBIfT">
+<p class="font-bold text-label-sm truncate">Lupa Electrónica</p>
+<p class="text-secondary font-extrabold">$79.00 <span class="text-on-surface-variant font-normal line-through text-[12px]">$99.00</span></p>
+</div>
+<!-- Mini Sale Card 2: Vertical Mouse -->
+<div class="flex-shrink-0 w-48 bg-white rounded-xl p-base text-on-surface">
+<img alt="Mouse Vertical" class="w-full aspect-square object-cover rounded-lg mb-base" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1CIvVFOYamfHPNNNZze7rIIJKOMOVuhX8wGGw-j2xDkA6v-t8X20KowBEHqOqNwyHv1IYHHg4jPtOeZT5WSxE6V2SXCGAHLrnhshWFhloPUI6hLhtkM9x6eh1GOK2CWjzNoJm8ng5euGR2qJbt457KNP9bTA3N7pf25A2Np0sARUE1_5nCQS7EVehfayrrzSFwnhIqVLEsveYohEizlmKmIgVRKL4eBJQegIuDcedLLB2iGf_pljyHMfuqyylU-9LfZTE8T9Bap_z">
+<p class="font-bold text-label-sm truncate">Mouse Vertical</p>
+<p class="text-secondary font-extrabold">$39.00 <span class="text-on-surface-variant font-normal line-through text-[12px]">$49.00</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 p-lg bg-white text-on-surface border-4 border-secondary rounded-2xl flex flex-col justify-between shadow-lg h-full">
+<span aria-hidden="true" class="material-symbols-outlined text-headline-xl p-4 bg-secondary text-white w-fit rounded-2xl mb-md">local_shipping</span>
+<div>
+<h3 class="text-headline-md mb-xs">Envío Gratis</h3>
+<p class="text-body-md font-bold">En compras mayores a $50.00 pesos.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Catalog Grid -->
+<section aria-labelledby="products-heading" class="py-xl px-md md:px-lg">
+<div class="flex items-center justify-between mb-lg">
+<h2 class="text-headline-lg text-primary" id="products-heading">Productos Recomendados</h2>
+<a class="text-secondary font-bold hover:underline flex items-center gap-xs" href="#">Ver todos <span aria-hidden="true" class="material-symbols-outlined text-[18px]">open_in_new</span></a>
+</div>
+<div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl">
+<!-- Product Card 1: Smart Watch (Existing) -->
+<article class="bg-white border-2 border-surface-container-highest group rounded-2xl flex flex-col transition-all hover:border-secondary hover:shadow-xl hover:scale-[1.02]">
+<div class="aspect-square bg-surface-container-low rounded-t-2xl overflow-hidden relative">
+<img alt="Reloj Inteligente con interfaz de alto contraste y correa negra." class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd2lYZ93Fz-GQO_h1D_0JAWOSZtZjbY_TDguHO18_YIXwV0YcMnDmdWWB3rE1D1xQb-C3dh_2nz4TLjSC0hT2J-gqFeYb6Agis3tGKXER1tY3Am-iXGh7T0Wz1lPBtfOiK92SiH33r387kd4Q8OhX19ZuVPGR9inheDgRTud-5XKnQxzAYy44YapJ5AmhIAwUXc9LtRE9wQVTNfbZS_nZBRas2glBg6UAbR81Ci7a83f3IIUmV7L0EdDVO38XYDIF6GnzeLPu0_51b">
+<div class="absolute top-4 left-4">
+<span class="bg-primary text-white px-sm py-xs rounded-lg text-label-sm font-bold shadow-sm">Nuevo</span>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h3 class="text-primary mb-xs text-headline-sm">Reloj Inteligente</h3>
+<p class="text-on-surface font-body-md mb-lg">Interfaz de alto contraste y comandos de voz simplificados.</p>
+<div class="mt-auto flex flex-col gap-md">
+<span class="text-headline-md font-extrabold text-primary">$129.00</span>
+<div class="flex gap-sm w-full">
+<button aria-label="Agregar Reloj Inteligente al carrito" class="flex-1 h-touch-target-min bg-secondary text-white font-extrabold rounded-xl hover:bg-primary transition-all flex items-center justify-center gap-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">add_shopping_cart</span> Agregar
+                                    </button>
+<button aria-label="Añadir Reloj Inteligente a la lista de deseos" class="w-touch-target-min h-touch-target-min border-2 border-outline flex items-center justify-center rounded-xl hover:bg-surface-container transition-all">
+<span aria-hidden="true" class="material-symbols-outlined">favorite_border</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Product Card 2: Pro Headphones (Existing) -->
+<article class="bg-white border-2 border-surface-container-highest group rounded-2xl flex flex-col transition-all hover:border-secondary hover:shadow-xl hover:scale-[1.02]">
+<div class="aspect-square bg-surface-container-low rounded-t-2xl overflow-hidden relative">
+<img alt="Audífonos Pro color azul oscuro con almohadillas suaves." class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkgfj6iTYeNDL38qjEo8lsni_xa96TcDyKTkTqZSFhNkwQPdXGn9QfBz_WCPtbr_5HXWlNUyVz-fZCyVN-q-BEbIC4mdWaRXeww1uQrE1mYatbKiUWCJdekrniwZUQv0WKV8mb7va7D8LxMSnf_gKp7Pum_qlT1D156SCJJsWV9UX1BgJe7ANGygTXQ9TWmzzDr-U1BpSWsi0bmAoaa8lfSDAOUuUvQnjcqkth2LmY0Rs78kAcK3LhcDHXRuazGach0Xf_OSyWnxjM">
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h3 class="text-primary mb-xs text-headline-sm">Audífonos Pro</h3>
+<p class="text-on-surface font-body-md mb-lg">Cancelación de ruido activa y almohadillas ultra suaves.</p>
+<div class="mt-auto flex flex-col gap-md">
+<span class="text-headline-md font-extrabold text-primary">$249.00</span>
+<div class="flex gap-sm w-full">
+<button aria-label="Agregar Audífonos Pro al carrito" class="flex-1 h-touch-target-min bg-secondary text-white font-extrabold rounded-xl hover:bg-primary transition-all flex items-center justify-center gap-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">add_shopping_cart</span> Agregar
+                                    </button>
+<button aria-label="Añadir Audífonos Pro a la lista de deseos" class="w-touch-target-min h-touch-target-min border-2 border-outline flex items-center justify-center rounded-xl hover:bg-surface-container transition-all">
+<span aria-hidden="true" class="material-symbols-outlined">favorite_border</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Product Card 3: Digital Reader (Existing) -->
+<article class="bg-white border-2 border-surface-container-highest group rounded-2xl flex flex-col transition-all hover:border-secondary hover:shadow-xl hover:scale-[1.02]">
+<div class="aspect-square bg-surface-container-low rounded-t-2xl overflow-hidden relative">
+<img alt="Lector Digital con pantalla de tinta electrónica." class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADeLomrMWgp9rp72EL7a5pxSQD6zT6851hXuYWkBk8hpxRkfQT1Tr7GqTYrnWZ-Xw0GhtNhA-eci95biwa5UYIoTd16TEsNak8kv46TFvfCTXpPbNiup1HEYtvWdsQeN8-Pcwd5Zr94hDh8kJ2YqsD1FTyEcce5IcoJ9s9RKPBooLPvHmAV48XIadsjA3WlpzmAHE8iFVd6JB59FNoeDHQW0E8QTEL8uev_P2kV8dn7R8qMMduBZQwt7AEStIpiMozq5gbXpyOsLxE">
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h3 class="text-primary mb-xs text-headline-sm">Lector Digital</h3>
+<p class="text-on-surface font-body-md mb-lg">Pantalla de tinta electrónica con retroiluminación regulable.</p>
+<div class="mt-auto flex flex-col gap-md">
+<span class="text-headline-md font-extrabold text-primary">$189.00</span>
+<div class="flex gap-sm w-full">
+<button aria-label="Agregar Lector Digital al carrito" class="flex-1 h-touch-target-min bg-secondary text-white font-extrabold rounded-xl hover:bg-primary transition-all flex items-center justify-center gap-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">add_shopping_cart</span> Agregar
+                                    </button>
+<button aria-label="Añadir Lector Digital a la lista de deseos" class="w-touch-target-min h-touch-target-min border-2 border-outline flex items-center justify-center rounded-xl hover:bg-surface-container transition-all">
+<span aria-hidden="true" class="material-symbols-outlined">favorite_border</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Product Card 4: Magnifier -->
+<article class="bg-white border-2 border-surface-container-highest group rounded-2xl flex flex-col transition-all hover:border-secondary hover:shadow-xl hover:scale-[1.02]">
+<div class="aspect-square bg-surface-container-low rounded-t-2xl overflow-hidden relative">
+<img alt="Lupa electrónica portátil para baja visión" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB92g5kvDbl1hx659itPmvjYV0YlAt_vXr2o2Z_RHxzdWrwOXYVUB38rDd0EhqFkpxNAU3jxwkS7WL1iLe0Qf3Uuiw_Le21Rrlc5Bqa-i2assSKkr7Uyh03CZAcF6QlAiSc1NzvMV8gwO6UPc7XxAk0zKeq47eEy1os3WMnaTAcuO51CL5J18OAMXy98k8layja4x5qEKtSyWKUa2-WbQf2vV0Mau1TMW3PFlp2_x6J56ag8Q71klvYjt_qo3DydzJ9DX3Fre_VBIfT">
+<div class="absolute top-4 left-4">
+<span class="bg-secondary text-white px-sm py-xs rounded-lg text-label-sm font-bold shadow-sm">Oferta</span>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h3 class="text-primary mb-xs text-headline-sm">Lupa Electrónica</h3>
+<p class="text-on-surface font-body-md mb-lg">Aumento digital de alta definición con modos de contraste ajustables.</p>
+<div class="mt-auto flex flex-col gap-md">
+<span class="text-headline-md font-extrabold text-primary">$79.00</span>
+<div class="flex gap-sm w-full">
+<button aria-label="Agregar Lupa Electrónica al carrito" class="flex-1 h-touch-target-min bg-secondary text-white font-extrabold rounded-xl hover:bg-primary transition-all flex items-center justify-center gap-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">add_shopping_cart</span> Agregar
+                                    </button>
+<button aria-label="Añadir a deseos" class="w-touch-target-min h-touch-target-min border-2 border-outline flex items-center justify-center rounded-xl hover:bg-surface-container transition-all">
+<span aria-hidden="true" class="material-symbols-outlined">favorite_border</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Product Card 5: Bone Conduction -->
+<article class="bg-white border-2 border-surface-container-highest group rounded-2xl flex flex-col transition-all hover:border-secondary hover:shadow-xl hover:scale-[1.02]">
+<div class="aspect-square bg-surface-container-low rounded-t-2xl overflow-hidden relative">
+<img alt="Audífonos de conducción ósea" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8wpDPBe7YKHlICNbkLNmpNxJGVVaYX9T7jJAm9bcm8o0GQzWluePiiamGkDozCIjue12cU7QdiiH8PL_1uPf3jdppa3ICn6wdppbo_nFaHfWdNaPbPQbkwjdNqX8SntXreNM37y5W5kX9Zx-ZvEX0_61LzaG-fF24q76_89idehRd-TMbpOQyjlf47CMXGWp8Cya_1PaWUpoX83POQrWc5Zbno3sPRASb3H5Ea8eBFpwqiKmDT0u5IbEe_YWQqB9JpvHE0NSiH0yn">
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h3 class="text-primary mb-xs text-headline-sm">Audífonos Conducción Ósea</h3>
+<p class="text-on-surface font-body-md mb-lg">Escucha audio sin bloquear tus oídos, ideal para orientación espacial.</p>
+<div class="mt-auto flex flex-col gap-md">
+<span class="text-headline-md font-extrabold text-primary">$159.00</span>
+<div class="flex gap-sm w-full">
+<button aria-label="Agregar Audífonos al carrito" class="flex-1 h-touch-target-min bg-secondary text-white font-extrabold rounded-xl hover:bg-primary transition-all flex items-center justify-center gap-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">add_shopping_cart</span> Agregar
+                                    </button>
+<button aria-label="Añadir a deseos" class="w-touch-target-min h-touch-target-min border-2 border-outline flex items-center justify-center rounded-xl hover:bg-surface-container transition-all">
+<span aria-hidden="true" class="material-symbols-outlined">favorite_border</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Product Card 6: Adaptive Controller -->
+<article class="bg-white border-2 border-surface-container-highest group rounded-2xl flex flex-col transition-all hover:border-secondary hover:shadow-xl hover:scale-[1.02]">
+<div class="aspect-square bg-surface-container-low rounded-t-2xl overflow-hidden relative">
+<img alt="Control de juegos adaptativo con botones grandes" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFBMxAfa6Q97gqROJ9mSMvq0k-4czgWJydoXpdKxMSDowI5IyMxINeN6ws8zeuQjNmapf5MrMLx37T3QOJ50YeU923rhnz_eXe7xlo9duy0nel4uQMra5I2ciiylTMuL082inwWXJQXzvNDiIMPARjY6a1IQngAVswiP3Vr6xOR0DuXFX7ZAypdkmFQDnXuw_hzZOgXf-fnbj5-bH1qC1qI0jRmrDguTCFb74NCzRGAz1ZN-lGZMa6v02GYhKwBJIh78fbybEqIqiJ">
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h3 class="text-primary mb-xs text-headline-sm">Control Adaptativo</h3>
+<p class="text-on-surface font-body-md mb-lg">Diseñado para gamers con movilidad limitada, totalmente personalizable.</p>
+<div class="mt-auto flex flex-col gap-md">
+<span class="text-headline-md font-extrabold text-primary">$99.00</span>
+<div class="flex gap-sm w-full">
+<button aria-label="Agregar Control al carrito" class="flex-1 h-touch-target-min bg-secondary text-white font-extrabold rounded-xl hover:bg-primary transition-all flex items-center justify-center gap-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">add_shopping_cart</span> Agregar
+                                    </button>
+<button aria-label="Añadir a deseos" class="w-touch-target-min h-touch-target-min border-2 border-outline flex items-center justify-center rounded-xl hover:bg-surface-container transition-all">
+<span aria-hidden="true" class="material-symbols-outlined">favorite_border</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Product Card 7: Vertical Mouse -->
+<article class="bg-white border-2 border-surface-container-highest group rounded-2xl flex flex-col transition-all hover:border-secondary hover:shadow-xl hover:scale-[1.02]">
+<div class="aspect-square bg-surface-container-low rounded-t-2xl overflow-hidden relative">
+<img alt="Mouse vertical ergonómico" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1CIvVFOYamfHPNNNZze7rIIJKOMOVuhX8wGGw-j2xDkA6v-t8X20KowBEHqOqNwyHv1IYHHg4jPtOeZT5WSxE6V2SXCGAHLrnhshWFhloPUI6hLhtkM9x6eh1GOK2CWjzNoJm8ng5euGR2qJbt457KNP9bTA3N7pf25A2Np0sARUE1_5nCQS7EVehfayrrzSFwnhIqVLEsveYohEizlmKmIgVRKL4eBJQegIuDcedLLB2iGf_pljyHMfuqyylU-9LfZTE8T9Bap_z">
+<div class="absolute top-4 left-4">
+<span class="bg-secondary text-white px-sm py-xs rounded-lg text-label-sm font-bold shadow-sm">Oferta</span>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h3 class="text-primary mb-xs text-headline-sm">Mouse Vertical Pro</h3>
+<p class="text-on-surface font-body-md mb-lg">Ergonomía superior para reducir la tensión en la muñeca y el brazo.</p>
+<div class="mt-auto flex flex-col gap-md">
+<span class="text-headline-md font-extrabold text-primary">$39.00</span>
+<div class="flex gap-sm w-full">
+<button aria-label="Agregar Mouse al carrito" class="flex-1 h-touch-target-min bg-secondary text-white font-extrabold rounded-xl hover:bg-primary transition-all flex items-center justify-center gap-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">add_shopping_cart</span> Agregar
+                                    </button>
+<button aria-label="Añadir a deseos" class="w-touch-target-min h-touch-target-min border-2 border-outline flex items-center justify-center rounded-xl hover:bg-surface-container transition-all">
+<span aria-hidden="true" class="material-symbols-outlined">favorite_border</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Product Card 8: Smart Lighting -->
+<article class="bg-white border-2 border-surface-container-highest group rounded-2xl flex flex-col transition-all hover:border-secondary hover:shadow-xl hover:scale-[1.02]">
+<div class="aspect-square bg-surface-container-low rounded-t-2xl overflow-hidden relative">
+<img alt="Kit de iluminación inteligente" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBU8P-krbZHMezZNKYIaebazLtTgTZWqyZgwfw1N2_aZfGaQPY3Aa0IvxW8cqAzq95-mMTEcbNdM5_7kCXv3750kJbtf4XKxdW-fw8Rd15RNhBEgfrqoZf-1OdcQ4Q95CKbED535jMgBW4svt7t8t2jx1AuF0AQwenI6omvaz-NNdRWSX40vFoKmfzr6NLKlLacv6Tkuag6yA6qD-TluEK3TfKdPvPjmVzjM0hkGpNydqOeFGsxcp5YmVtuBcf77GxdpnP1vdV-wWIr">
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h3 class="text-primary mb-xs text-headline-sm">Kit de Luz Inteligente</h3>
+<p class="text-on-surface font-body-md mb-lg">Control por voz y automatización para mejorar la visibilidad en el hogar.</p>
+<div class="mt-auto flex flex-col gap-md">
+<span class="text-headline-md font-extrabold text-primary">$119.00</span>
+<div class="flex gap-sm w-full">
+<button aria-label="Agregar Kit al carrito" class="flex-1 h-touch-target-min bg-secondary text-white font-extrabold rounded-xl hover:bg-primary transition-all flex items-center justify-center gap-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">add_shopping_cart</span> Agregar
+                                    </button>
+<button aria-label="Añadir a deseos" class="w-touch-target-min h-touch-target-min border-2 border-outline flex items-center justify-center rounded-xl hover:bg-surface-container transition-all">
+<span aria-hidden="true" class="material-symbols-outlined">favorite_border</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Product Card 9: Braille Watch -->
+<article class="bg-white border-2 border-surface-container-highest group rounded-2xl flex flex-col transition-all hover:border-secondary hover:shadow-xl hover:scale-[1.02]">
+<div class="aspect-square bg-surface-container-low rounded-t-2xl overflow-hidden relative">
+<img alt="Reloj inteligente con interfaz braille táctil" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZPIoJ3XG35oLEDD2nFL2rAFHu4ujXLULVTUXfVyvBuy52hwynO3pRrRTV6zrJTX1MRDIeUPkOUIF__0KLhKIs-gO4jeoG81DXTGI90fmA4A32EdJykPpGQ7Wdx4gKJfb8ZoOcOfZEF6NB-vweYkq3YxCyZh-WVPxcJVeJSEEY7lOx27mAlc9UYsC48pjtj38DQcZ-vJbQt001RHfRYmX6_LuIWFPWHVXwNP2jpFZ5gEJX0xtl3M3DQ5Y60uwwVXOMo84LINUejmzf">
+<div class="absolute top-4 left-4">
+<span class="bg-primary text-white px-sm py-xs rounded-lg text-label-sm font-bold shadow-sm">Premium</span>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<h3 class="text-primary mb-xs text-headline-sm">Reloj Braille Táctil</h3>
+<p class="text-on-surface font-body-md mb-lg">Información en tiempo real a través de una innovadora pantalla braille dinámica.</p>
+<div class="mt-auto flex flex-col gap-md">
+<span class="text-headline-md font-extrabold text-primary">$349.00</span>
+<div class="flex gap-sm w-full">
+<button aria-label="Agregar Reloj Braille al carrito" class="flex-1 h-touch-target-min bg-secondary text-white font-extrabold rounded-xl hover:bg-primary transition-all flex items-center justify-center gap-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-[20px]">add_shopping_cart</span> Agregar
+                                    </button>
+<button aria-label="Añadir a deseos" class="w-touch-target-min h-touch-target-min border-2 border-outline flex items-center justify-center rounded-xl hover:bg-surface-container transition-all">
+<span aria-hidden="true" class="material-symbols-outlined">favorite_border</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Support/Contact Section -->
+<section aria-labelledby="contact-heading" class="py-xl px-md md:px-lg bg-surface-container-low">
+<div class="max-w-3xl mx-auto bg-white p-lg md:p-xl rounded-3xl shadow-xl border-2 border-surface-container-highest">
+<div class="text-center mb-xl">
+<h2 class="text-headline-lg text-primary mb-md" id="contact-heading">¿Necesitas ayuda personalizada?</h2>
+<p class="text-body-lg text-on-surface">Nuestro equipo de soporte está disponible para asistirte con herramientas de accesibilidad o procesos de compra.</p>
+</div>
+<form aria-describedby="form-desc" class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<p class="sr-only" id="form-desc">Todos los campos son obligatorios.</p>
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm font-bold text-primary" for="name">Nombre Completo</label>
+<input autocomplete="name" class="w-full h-[56px] border-2 border-outline px-md font-body-md rounded-xl focus:border-primary outline-none" id="name" name="name" required="" type="text">
+</div>
+<div class="flex flex-col gap-xs">
+<label class="text-label-sm font-bold text-primary" for="email">Correo Electrónico</label>
+<input autocomplete="email" class="w-full h-[56px] border-2 border-outline px-md font-body-md rounded-xl focus:border-primary outline-none" id="email" name="email" required="" type="email">
+</div>
+<div class="flex flex-col gap-xs md:col-span-2">
+<label class="text-label-sm font-bold text-primary" for="message">¿Cómo podemos ayudarte?</label>
+<textarea class="w-full border-2 border-outline p-md font-body-md rounded-xl focus:border-primary outline-none" id="message" name="message" required="" rows="4"></textarea>
+</div>
+<div class="md:col-span-2">
+<button class="w-full h-[64px] bg-primary text-white text-label-lg font-bold rounded-xl hover:bg-secondary transition-all shadow-lg active:scale-95" type="submit">
+                                Enviar Consulta
+                            </button>
+</div>
+</form>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-primary text-white" role="contentinfo">
+<div class="max-w-container-max mx-auto py-xl px-md md:px-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-xl items-start">
+<div class="flex flex-col gap-md">
+<h2 class="text-headline-md font-extrabold">Tienda<span class="text-secondary-fixed-dim">Inclusiva</span></h2>
+<p class="text-body-md opacity-90">Liderando el camino hacia un comercio digital sin barreras. Calidad, diseño y empatía en cada producto.</p>
+</div>
+<nav aria-label="Enlaces de navegación" class="flex flex-col gap-sm">
+<h3 class="text-label-lg mb-base">Navegación</h3>
+<ul class="flex flex-col gap-xs">
+<li class=""><a class="text-white hover:text-secondary-fixed-dim underline decoration-transparent hover:decoration-secondary-fixed-dim underline-offset-4 transition-colors" href="#">Productos</a></li>
+<li class=""><a class="text-white hover:text-secondary-fixed-dim underline decoration-transparent hover:decoration-secondary-fixed-dim underline-offset-4 transition-colors" href="#">Categorías</a></li>
+<li class=""><a class="text-white hover:text-secondary-fixed-dim underline decoration-transparent hover:decoration-secondary-fixed-dim underline-offset-4 transition-colors" href="#">Ofertas</a></li>
+<li class=""><a class="text-white hover:text-secondary-fixed-dim underline decoration-transparent hover:decoration-secondary-fixed-dim underline-offset-4 transition-colors" href="#">Blog de Accesibilidad</a></li>
+</ul>
+</nav>
+<nav aria-label="Enlaces legales" class="flex flex-col gap-sm">
+<h3 class="text-label-lg mb-base">Legal y Soporte</h3>
+<ul class="flex flex-col gap-xs">
+<li class=""><a class="text-white hover:text-secondary-fixed-dim underline decoration-transparent hover:decoration-secondary-fixed-dim underline-offset-4 transition-colors" href="#">Declaración de Accesibilidad</a></li>
+<li class=""><a class="text-white hover:text-secondary-fixed-dim underline decoration-transparent hover:decoration-secondary-fixed-dim underline-offset-4 transition-colors" href="#">Términos de Servicio</a></li>
+<li class=""><a class="text-white hover:text-secondary-fixed-dim underline decoration-transparent hover:decoration-secondary-fixed-dim underline-offset-4 transition-colors" href="#">Política de Privacidad</a></li>
+<li class=""><a class="text-white hover:text-secondary-fixed-dim underline decoration-transparent hover:decoration-secondary-fixed-dim underline-offset-4 transition-colors" href="#">Contacto</a></li>
+</ul>
+</nav>
+<div class="flex flex-col gap-sm">
+<h3 class="text-label-lg mb-base">Síguenos</h3>
+<div class="flex gap-md">
+<a aria-label="Facebook" class="w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-secondary rounded-full transition-colors" href="#">
+<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+</a>
+<a aria-label="Instagram" class="w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-secondary rounded-full transition-colors" href="#">
+<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><rect height="20" rx="5" ry="5" width="20" x="2" y="2"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
+</a>
+<a aria-label="LinkedIn" class="w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-secondary rounded-full transition-colors" href="#">
+<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect height="12" width="4" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+</a>
+</div>
+</div>
+</div>
+<div class="border-t border-white/20 mt-xl pt-lg flex flex-col md:flex-row justify-between items-center gap-md">
+<p class="text-body-md opacity-80">© 2024 Tienda Inclusiva. Todos los derechos reservados.</p>
+<div class="flex gap-md">
+<button aria-label="Cambiar idioma" class="hover:text-secondary-fixed-dim transition-colors">
+<span aria-hidden="true" class="material-symbols-outlined">language</span>
+</button>
+<button aria-label="Compartir esta página" class="hover:text-secondary-fixed-dim transition-colors">
+<span aria-hidden="true" class="material-symbols-outlined">share</span>
+</button>
+</div>
+</div>
+</div>
+</footer>
+<!-- Floating Buttons -->
+<div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
+<a aria-label="Contactar por WhatsApp" class="group flex items-center gap-3 px-4 py-3 bg-[#25D366] text-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.3)] hover:scale-105 active:scale-95 transition-all border-4 border-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/60" href="https://wa.me/1234567890?text=Hola%2C%20necesito%20asistencia%20con%20mi%20compra" target="_blank" rel="noopener noreferrer" title="Contactar soporte por WhatsApp">
+<svg class="w-8 h-8 fill-current" viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"></path></svg>
+<span class="hidden md:inline-block font-bold">Soporte WhatsApp</span>
+</a>
+<button aria-expanded="false" aria-haspopup="dialog" aria-label="Abrir Menú de Accesibilidad" class="w-[72px] h-[72px] bg-primary text-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.3)] hover:scale-110 active:scale-95 transition-all flex items-center justify-center border-4 border-white focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/40" id="fabBtn" onclick="toggleAccessibilityMenu()">
+<span aria-hidden="true" class="material-symbols-outlined !text-[40px]">accessibility_new</span>
+</button>
+</div>
+<!-- Accessibility Panel Modal -->
+<div aria-labelledby="acc-modal-title" aria-modal="true" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm items-center justify-center px-md hidden" id="accessibilityModal" role="dialog">
+<div class="bg-white w-full max-w-md rounded-3xl shadow-2xl p-lg">
+<div class="flex justify-between items-center mb-lg">
+<div>
+<h2 class="text-headline-md text-primary" id="acc-modal-title">Panel de Accesibilidad</h2>
+<p class="text-label-sm text-on-surface-variant">Personaliza tu experiencia visual</p>
+</div>
+<button aria-label="Cerrar panel de accesibilidad" class="w-touch-target-min h-touch-target-min flex items-center justify-center hover:bg-surface-container rounded-xl transition-all" onclick="toggleAccessibilityMenu()">
+<span aria-hidden="true" class="material-symbols-outlined">close</span>
+</button>
+</div>
+<nav class="grid grid-cols-1 gap-sm mb-lg">
+<button aria-label="Aumentar tamaño de texto" class="flex items-center gap-md p-sm text-primary hover:bg-surface-container rounded-xl transition-all text-left group" onclick="toggleTextSize()">
+<span aria-hidden="true" class="material-symbols-outlined p-2 bg-primary text-white rounded-lg !text-[28px] group-hover:bg-secondary transition-colors">text_fields</span>
+<span class="text-label-lg font-bold">Ajustar Tamaño de Texto</span>
+</button>
+<button aria-label="Activar modo de alto contraste" class="flex items-center gap-md p-sm text-primary hover:bg-surface-container rounded-xl transition-all text-left group" id="contrastBtn" onclick="toggleHighContrast()">
+<span aria-hidden="true" class="material-symbols-outlined p-2 bg-primary text-white rounded-lg !text-[28px] group-hover:bg-secondary transition-colors">contrast</span>
+<span class="text-label-lg font-bold">Alto Contraste</span>
+</button>
+<button id="toggleKeyboardBtn" aria-expanded="false" aria-label="Activar guía de navegación por teclado" class="flex items-center gap-md p-sm text-primary hover:bg-surface-container rounded-xl transition-all text-left group" onclick="toggleKeyboardGuide()">
+<span aria-hidden="true" class="material-symbols-outlined p-2 bg-primary text-white rounded-lg !text-[28px] group-hover:bg-secondary transition-colors">keyboard</span>
+<span class="text-label-lg font-bold">Guía de Teclado</span>
+</button>
+<button id="reduceMotionBtn" aria-pressed="false" aria-label="Detener animaciones y movimientos" class="flex items-center gap-md p-sm text-primary hover:bg-surface-container rounded-xl transition-all text-left group" onclick="toggleReduceMotion()">
+<span aria-hidden="true" class="material-symbols-outlined p-2 bg-primary text-white rounded-lg !text-[28px] group-hover:bg-secondary transition-colors">motion_photos_off</span>
+<span class="text-label-lg font-bold">Detener Animaciones</span>
+</button>
+</nav>
+<div id="keyboardHelpInfo" class="hidden p-md bg-surface rounded-2xl border border-outline mb-lg">
+<h3 class="text-headline-sm text-primary mb-sm">Navegación por teclado</h3>
+<ul class="list-disc list-inside text-body-md space-y-2">
+<li>Usa <strong>Tab</strong> para avanzar entre enlaces, botones y formularios.</li>
+<li>Presiona <strong>Shift + Tab</strong> para retroceder en el orden de enfoque.</li>
+<li>Presiona <strong>Enter</strong> para activar botones y enlaces.</li>
+<li>Presiona <strong>Esc</strong> para cerrar el panel de accesibilidad.</li>
+</ul>
+</div>
+<p id="preference-feedback" class="sr-only" aria-live="polite">Preferencias de accesibilidad disponibles.</p>
+<button aria-label="Restablecer todas las preferencias de accesibilidad" class="w-full h-touch-target-min bg-primary text-white font-extrabold rounded-xl hover:bg-black transition-all shadow-md" onclick="resetPreferences()">
+                Restablecer Preferencias
+            </button>
+</div>
+</div>
+<script>
+        const setPrefFeedback = (message) => {
+            const feedback = document.getElementById('preference-feedback');
+            if (feedback) feedback.textContent = message;
+        };
+
+        function toggleAccessibilityMenu() {
+            const modal = document.getElementById('accessibilityModal');
+            const btn = document.getElementById('fabBtn');
+            const isActive = modal.classList.toggle('hidden');
+            const isVisible = !isActive;
+
+            modal.style.display = isVisible ? 'flex' : 'none';
+            btn.setAttribute('aria-expanded', isVisible);
+
+            if (isVisible) {
+                document.body.style.overflow = 'hidden';
+                modal.querySelector('button[aria-label="Cerrar panel de accesibilidad"]').focus();
+            } else {
+                document.body.style.overflow = '';
+                btn.focus();
+            }
+        }
+
+        function toggleHighContrast() {
+            const btn = document.getElementById('contrastBtn');
+            document.body.classList.toggle('accessibility-active');
+            const isActive = document.body.classList.contains('accessibility-active');
+            btn.setAttribute('aria-pressed', isActive);
+            setPrefFeedback(isActive ? 'Modo de alto contraste activado.' : 'Modo de alto contraste desactivado.');
+        }
+
+        let currentScaleIndex = 0;
+        const fontSizes = ['16px', '18px', '22px'];
+
+        function toggleTextSize() {
+            currentScaleIndex = (currentScaleIndex + 1) % fontSizes.length;
+            document.documentElement.style.fontSize = fontSizes[currentScaleIndex];
+            setPrefFeedback('Tamaño de texto ajustado.');
+        }
+
+        function toggleReduceMotion() {
+            const btn = document.getElementById('reduceMotionBtn');
+            document.body.classList.toggle('reduce-motion');
+            const isReduced = document.body.classList.contains('reduce-motion');
+            btn.setAttribute('aria-pressed', isReduced);
+            setPrefFeedback(isReduced ? 'Animaciones reducidas.' : 'Animaciones restauradas.');
+        }
+
+        function toggleKeyboardGuide() {
+            const info = document.getElementById('keyboardHelpInfo');
+            const btn = document.getElementById('toggleKeyboardBtn');
+            info.classList.toggle('hidden');
+            const isVisible = !info.classList.contains('hidden');
+            btn.setAttribute('aria-expanded', isVisible);
+            setPrefFeedback(isVisible ? 'Guía de teclado visible.' : 'Guía de teclado oculta.');
+        }
+
+        function resetPreferences() {
+            document.body.classList.remove('accessibility-active');
+            document.body.classList.remove('reduce-motion');
+            currentScaleIndex = 0;
+            document.documentElement.style.fontSize = fontSizes[0];
+            document.getElementById('contrastBtn').setAttribute('aria-pressed', 'false');
+            document.getElementById('reduceMotionBtn').setAttribute('aria-pressed', 'false');
+            document.getElementById('toggleKeyboardBtn').setAttribute('aria-expanded', 'false');
+            document.getElementById('keyboardHelpInfo').classList.add('hidden');
+            setPrefFeedback('Preferencias restablecidas.');
+            toggleAccessibilityMenu();
+        }
+
+        document.getElementById('accessibilityModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleAccessibilityMenu();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !document.getElementById('accessibilityModal').classList.contains('hidden')) {
+                toggleAccessibilityMenu();
+            }
+        });
+
+        window.addEventListener('load', function() {
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.body.classList.add('reduce-motion');
+                document.getElementById('reduceMotionBtn').setAttribute('aria-pressed', 'true');
+            }
+        });
+    </script>
+
+
+</body></html>
